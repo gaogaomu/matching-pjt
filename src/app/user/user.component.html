@@ -1,0 +1,69 @@
+<div class="main">
+    <div *ngIf="_userDetail$ | async as user" class="profile">
+        <section class="profile__basic">
+            <div class="profile-img">
+                <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="self" width="300"
+                    height="300">
+            </div>
+            <h2>基本情報</h2>
+            <div class="profile-name">
+                <div class="props">名前</div>
+                <span>{{user.name}}</span>
+            </div>
+            <div class="profile-age">
+                <div class="props">年齢</div>
+                <span>{{user.age}}</span>
+            </div>
+            <div class="profile-living">
+                <div class="props">居住地</div>
+                <span>{{user.prefecture}}</span>
+            </div>
+            <!-- <div class="profile-comment">
+                <div class="props">コメント</div>
+                <span>
+                    よろしくです。よろしくです。よろしくです。よろしくです。よろしくです。よろしくです。よろしくです。よろしくです。よろしくです。よろしくです。よろしくです。よろしくです。よろしくです。よろしくです。よろしくです。よろしくです。よろしくです。よろしくです。よろしくです。よろしくです。よろしくです。</span>
+            </div> -->
+        </section>
+        <h2></h2>
+        <section class="profile__status">
+            <h2>学歴・職業・外見</h2>
+            <div class="profile-occupation">
+                <div class="props">業種</div>
+                <span>{{user.industry}}</span>
+            </div>
+            <div class="profile-industry">
+                <div class="props">職種</div>
+                <span>{{user.occupation}}</span>
+            </div>
+
+            <div class="profile-height">
+                <div class="props">身長</div>
+                <span>{{user.height}}</span>
+            </div>
+            <div class="profile-physique">
+                <div class="props">体格</div>
+                <span>{{user.occupation}}</span>
+            </div>
+        </section>
+        <h2></h2>
+        <section class="profile__character">
+            <h2>性格・生活</h2>
+            <div class="profile-character">
+                <div class="props">性格</div>
+                <span>{{user.character}}</span>
+            </div>
+            <div class="profile-holiday">
+                <div class="props">休日</div>
+                <span>{{user.holiday}}</span>
+            </div>
+            <div class="profile-alcohol">
+                <div class="props">お酒</div>
+                <span>{{user.alcohol}}</span>
+            </div>
+            <div class="profile-cigarettes">
+                <div class="props">タバコ</div>
+                <span>{{user.cigarettes}}</span>
+            </div>
+        </section>
+    </div>
+</div>

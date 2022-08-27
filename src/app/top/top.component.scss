@@ -1,0 +1,23 @@
+.container {
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+}
+
+.sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+
+  .menu-item {
+    display: flex;
+    margin: 10px;
+
+    .menu-icon {
+      margin-right: 10px;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+
+export function createPasswordStrengthValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const value = control.value;
+
+    if (!value) {
+      return null;
+    }
+
+    const hasUpperCase = /[A-Z]+/.test(value);
+
+    const hasLowerCase = /[a-z]+/.test(value);
+
+    const hasNumeric = /[0-9]+/.test(value);
+
+    const passwordValid = hasUpperCase && hasLowerCase && hasNumeric;
+
+    return !passwordValid ? { passwordStrength: true } : null;
+  };
+}
+
+export const identityRevealedValidator: ValidatorFn = (
+  control: AbstractControl
+): ValidationErrors | null => {
+  const password = control.get('password');
+  const password_confirm = control.get('password_confirm');
+
+  return password?.value === password_confirm?.value
+    ? { identityRevealed: true }
+    : null;
+};

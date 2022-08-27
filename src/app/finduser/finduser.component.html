@@ -1,0 +1,16 @@
+<div class="user-grid">
+    <div *ngFor="let user of users$ | async as users">
+        <mat-card class="user-card">
+            <a routerLink="./{{user.id}}">
+                <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+            </a>
+            <mat-card-title>
+                <div class="content">
+                    {{user.id}}
+                </div>
+            </mat-card-title>
+            <mat-card-content>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

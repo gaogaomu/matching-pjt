@@ -1,0 +1,128 @@
+<div class="main">
+    <mat-card class="admission-card">
+        <mat-card-title class="logo">ALL-MATCHER</mat-card-title>
+        <form [formGroup]="_admissionForm" class="admission-form">
+
+            <div class="space">
+                <h4>名前</h4>
+                <mat-form-field style="width:150px;" appearance="fill" class="form-field">
+                    <mat-label>姓を入力</mat-label>
+                    <input matInput placeholder="姓" formControlName="first_name">
+                    <mat-error *ngIf="first_name?.invalid && (first_name?.touched || first_name?.dirty)">
+                        姓の値が不正です
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field style="width:150px;" appearance="fill" class="form-field">
+                    <mat-label>名を入力</mat-label>
+                    <input matInput placeholder="名" formControlName="last_name">
+                    <mat-error *ngIf="last_name?.invalid  && (last_name?.touched || last_name?.dirty)">名の値が不正です
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="space">
+                <h4>生年年月日</h4>
+                <mat-form-field appearance="fill">
+                    <mat-label>生年年月日を選択</mat-label>
+                    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="dp" formControlName="birth_day">
+                    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                    <mat-datepicker #dp></mat-datepicker>
+                    <mat-error *ngIf="birth_day?.invalid && (birth_day?.touched || birth_day?.dirty)">入力必須です
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="space">
+                <h4>性別</h4>
+                <mat-form-field style="width:120px;" appearance="fill">
+                    <mat-label>性別</mat-label>
+                    <mat-select formControlName="gender">
+                        <mat-option value="男">男</mat-option>
+                        <mat-option value="女">女</mat-option>
+                        <mat-option value="LGBT">LGBT</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="gender?.invalid && (gender?.touched || gender?.dirty)">入力必須です</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="space">
+                <h4>住所</h4>
+                <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>郵便番号</mat-label>
+                    <input type="number" matInput placeholder="1234567" formControlName="zip_cd">
+                    <mat-error *ngIf="zip_cd?.invalid && (zip_cd?.touched || zip_cd?.dirty)">郵便番号の値が不正です
+                    </mat-error>
+                </mat-form-field>
+                <!-- <button class="srch-zip" type="submit" mat-stroked-button color="primary">検索</button> -->
+            </div>
+            <div class="space">
+                <mat-form-field style="width:120px;" appearance="fill">
+                    <mat-label>都道府県</mat-label>
+                    <mat-select formControlName="prefecture">
+                        <mat-option *ngFor="let pre of prefectures" value="{{pre}}">
+                            {{pre}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="prefecture?.invalid && (prefecture?.touched || prefecture?.dirty)">入力必須です
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field style="width:320px;" appearance="fill" class="form-field">
+                    <mat-label>市区町村</mat-label>
+                    <input matInput placeholder="千代田区麹町" formControlName="address_1">
+                    <mat-error *ngIf="address_1?.invalid && (address_1?.touched || address_1?.dirty)">
+                        市区町村の値は必須です</mat-error>
+                </mat-form-field>
+                <mat-form-field style="width:320px;" appearance="fill" class="form-field">
+                    <mat-label>丁・番地・号</mat-label>
+                    <input matInput placeholder="5-11-5" formControlName="address_2">
+                    <mat-error *ngIf="address_2?.invalid && (address_2?.touched || address_2?.dirty)">
+                        丁・番地・号の値は必須です</mat-error>
+                </mat-form-field>
+                <mat-form-field style="width:320px;" appearance="fill" class="form-field">
+                    <mat-label>建物名</mat-label>
+                    <input matInput placeholder="XXハイム 706号室" formControlName="building_name">
+                </mat-form-field>
+            </div>
+            <div class="space">
+                <h4>電話番号</h4>
+                <mat-form-field style="width:150px;" appearance="fill" class="form-field">
+                    <mat-label>電話番号を入力</mat-label>
+                    <input type="number" matInput placeholder="08012341234" formControlName="phone">
+                    <mat-error *ngIf="phone?.invalid && (phone?.touched || phone?.dirty)">電話番号の値が不正です
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="space">
+                <h4>メールアドレス</h4>
+                <mat-form-field style="width:320px;" appearance="fill" class="form-field">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput placeholder="example@example.com" formControlName="email">
+                    <mat-error *ngIf="email?.invalid && (email?.touched || email?.dirty)">Emailの値が不正です</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="space">
+                <h4>パスワード</h4>
+                <mat-form-field style="width:320px;" appearance="fill">
+                    <mat-label>パスワード</mat-label>
+                    <input matInput [type]="hide_1 ? 'password' : 'text'" formControlName="password">
+                    <mat-error *ngIf="password?.invalid && (password?.touched || password?.dirty)">パスワードの値が不正です
+                    </mat-error>
+                    <button mat-icon-button matSuffix (click)="hide_1 = !hide_1" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide_1">
+                        <mat-icon>{{hide_1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+                <mat-form-field style="width:320px;" appearance="fill">
+                    <mat-label>パスワード確認用</mat-label>
+                    <input matInput [type]="hide_2 ? 'password' : 'text'" formControlName="password_confirm">
+                    <mat-error
+                        *ngIf="password_confirm?.invalid && (password_confirm?.touched || password_confirm?.dirty)">
+                        パスワードの値が等しくありません</mat-error>
+                    <button mat-icon-button matSuffix (click)="hide_2 = !hide_2" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide_2">
+                        <mat-icon>{{hide_2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+            <button class="nextPage" type="submit" mat-stroked-button color="primary">次へ進む</button>
+        </form>
+    </mat-card>
+</div>
